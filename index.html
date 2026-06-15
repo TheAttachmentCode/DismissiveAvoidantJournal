@@ -175,6 +175,9 @@ body { background:var(--bg); color:var(--cream); font-family:var(--font-b); font
 .gen-response-wrap.open { display:block; animation:fadeIn .2s ease; }
 .gen-response-wrap .prompt-textarea { min-height:100px; }
 .gen-intro { font-size:13px; color:var(--grey); line-height:1.8; margin-bottom:1.25rem; padding-bottom:1rem; border-bottom:1px solid var(--border); font-family:var(--font-d); font-style:italic; }
+.portal-journal-header{margin-bottom:1.5rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border);display:flex;gap:1.25rem;align-items:flex-start;}
+.prompt-card{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin-bottom:.85rem;transition:border-color .2s;}
+.prompt-text{font-family:var(--font-d);font-size:1.05rem;font-weight:400;color:var(--cream);line-height:1.5;margin-bottom:.85rem;}
 </style>
 </head>
 <body>
@@ -536,8 +539,7 @@ function renderPrompts(portalKey, setIndex) {
   let html = `<div class="portal-journal-header">`;
   if (iconSrc) html += `<img class="portal-journal-header-icon" src="${iconSrc}" alt="">`;
   html += `<div class="portal-journal-header-text"><h3>${meta.name}</h3><p class="portal-teaching">${meta.teaching}</p></div></div>`;
-  html += `<span class="set-counter">Reflection set ${setIndex + 1} of ${total}</span>`;
-  html += `<button class="cycle-set-btn" onclick="cyclePortalSet('${portalKey}')">Try a different set</button>`;
+  html += `<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;flex-wrap:wrap;gap:8px;"><span class="set-counter" style="margin-bottom:0;">Reflection set ${setIndex + 1} of ${total}</span><button class="cycle-set-btn" onclick="cyclePortalSet('${portalKey}')">&#8635; Try a different set</button></div>`;
   qs.forEach((q, i) => {
     const id = `da-${portalKey}-${setIndex}-${i}`;
     const saved = localStorage.getItem(id) || '';
